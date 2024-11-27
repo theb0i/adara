@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Ephesis&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <title>Speisekarte - Adara Berlin </title>
+
+  <style>
+    body {
+        font-family: "Inter", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: 400;
+        font-style: normal;
+        background: linear-gradient(180deg, #222222, #000000); /* Gradient von #333 nach #000 */
+        min-height: 1000px;
+    }
+
+    .header {
+        padding: 10px;
+        text-align: center;
+    }
+
+    .footer {
+      position: relative;
+      padding: 150px 10px;
+      text-align: center;
+      overflow: hidden; /* Damit der Rauch innerhalb bleibt */
+    }
+
+    /* Rauchwolke */
+.smoke {
+  position: absolute;
+  bottom: -50px; /* Startpunkt unten */
+  width: 50px;
+  height: 50px;
+  background: rgba(255, 255, 255, 0.6); /* Weißer Rauch mit transparenterem Aussehen */
+  border-radius: 50%;
+  animation: smoke-animation 6s infinite;
+  opacity: 1;
+  transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+    .smoke:nth-child(1) {
+  left: 10%;
+  animation-duration: 8s;
+}
+
+.smoke:nth-child(7) {
+  left: 20%;
+  animation-duration: 9s;
+}
+
+.smoke:nth-child(2) {
+  left: 40%;
+  animation-duration: 7s;
+}
+
+.smoke:nth-child(3) {
+  left: 50%;
+  animation-duration: 6s;
+}
+
+.smoke:nth-child(4) {
+  left: 70%;
+  animation-duration: 9s;
+}
+
+.smoke:nth-child(5) {
+  left: 90%;
+  animation-duration: 7s;
+}
+
+.smoke:nth-child(6) {
+  left: 60%;
+  animation-duration: 6s;
+}
+
+@keyframes smoke-animation {
+  0% {
+    transform: scale(0.8) translateX(0) translateY(0); /* Startgröße und Position */
+    opacity: 1; /* Anfangs vollständig sichtbar */
+  }
+  50% {
+    transform: scale(0.6) translateX(10px) translateY(-80px); /* Verkleinerung und Bewegung */
+    opacity: 0.5; /* Halbtransparent */
+  }
+  100% {
+    transform: scale(0.4) translateX(-10px) translateY(-200px); /* Verkleinerung und Bewegung */
+    opacity: 0; /* Endgültig unsichtbar */
+  }
+}
+
+
+
+    .getraenkeIcon {
+        float: right;
+        display: flex;
+    }
+
+    .adara-text {
+        font-family: "Ephesis", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: 400;
+        font-style: normal;
+        font-size: 40px;
+        color: #e0091e;
+    }
+    
+    .lounge-text {
+        font-family: "inter", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: 300;
+        font-style: normal;
+        font-size: 13px;
+        color: #fff;
+        text-transform: uppercase;
+        margin: -15px 0px 0 53px;
+    }
+
+
+    .accordion {
+    background-color: #444;
+    color: #fff;
+    cursor: pointer;
+    padding: 15px;
+    text-align: left;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 25px;
+    outline: none;
+    font-size: large;
+    width: 100%;
+    transition: background-color 1.5s ease;
+    margin-bottom: 5px;
+    display: flex; /* Flexbox aktivieren */
+    justify-content: space-between; /* Titel links, Icon rechts */
+    align-items: center; /* Vertikal zentrieren */
+    z-index: 10; /* Höherer z-index für das Accordion */
+    position: relative;
+}
+
+.accordion.active {
+    border-bottom-left-radius: 0px; /* Entfernt den unteren linken Radius bei aktivem Accordion */
+    border-bottom-right-radius: 0px; /* Entfernt den unteren rechten Radius bei aktivem Accordion */
+    background-color: #9a13a1;
+}
+
+    .accordion:hover {
+      background-color: #400443;
+    }
+
+    
+    .material-symbols-outlined {
+      margin-left: auto; /* Sicherstellen, dass das Icon rechts bleibt */
+    }
+    
+    .panel {
+    max-height: 0; 
+    overflow: hidden; 
+    background-color: #f1f1f1;
+    padding: 0 10px; 
+    margin: 0 0 10px 0;
+    border-bottom: 0px solid #ddd;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+    transition: max-height 0.3s ease, padding 0.5s ease, border-radius 0.3s ease;
+    z-index: -1; /* Niedriger z-index für das Panel, damit es hinter dem Accordion liegt */
+    position: relative;
+}
+
+.panel.active {
+    margin-top: -30px;
+    padding: 30px 10px 10px 10px;
+    max-height: 500px; /* Groß genug wählen, um den Inhalt aufzunehmen */
+    border-bottom: 0px solid transparent; /* Setzt den border-bottom auf 0px, wenn das Panel geöffnet ist */
+    border-bottom-left-radius: 25px; /* Macht die untere linke Ecke flach */
+    border-bottom-right-radius: 25px; /* Macht die untere rechte Ecke flach */
+}
+
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="adara-text"><b>Adara</b></div><div class="lounge-text">Lounge</div>
+  </div>
+
+  <div class="container">
+
+    <!-- Getränke Section -->
+    <button class="accordion" onclick="togglePanel('getraenkePanel', 'getraenkeIcon', 'getraenkeBtn')" id="getraenkeBtn">Getränke 
+        <span id="getraenkeIcon" class="material-symbols-outlined">arrow_drop_down</span>
+      </button>
+    <div class="panel" id="getraenkePanel">
+      <div class="menu-item">Orientalischer Tee - <strong>4,50 €</strong></div>
+      <div class="menu-item">Marokkanischer Minztee - <strong>5,00 €</strong></div>
+      <div class="menu-item">Granatapfelsaft - <strong>3,50 €</strong></div>
+    </div>
+
+    <!-- Shisha Section -->
+    <button class="accordion" onclick="togglePanel('shishaPanel', 'shishaIcon', 'shishaBtn')" id="shishaBtn">Shisha 
+      <span id="shishaIcon" class="material-symbols-outlined">arrow_drop_down</span>
+    </button>
+    <div class="panel" id="shishaPanel">
+      <div class="menu-item">Apfel - <strong>12,00 €</strong></div>
+      <div class="menu-item">Traube Minze - <strong>14,00 €</strong></div>
+      <div class="menu-item">Wassermelone - <strong>13,50 €</strong></div>
+    </div>
+
+    <!-- Cocktails Section -->
+    <button class="accordion" onclick="togglePanel('cocktailsPanel', 'cocktailsIcon','cocktailsBtn')" id="cocktailsBtn">Cocktails 
+      <span id="cocktailsIcon" class="material-symbols-outlined">arrow_drop_down</span>
+    </button>
+    <div class="panel" id="cocktailsPanel">
+      <div class="menu-item">Mojito - <strong>8,50 €</strong></div>
+      <div class="menu-item">Caipirinha - <strong>9,00 €</strong></div>
+      <div class="menu-item">Pina Colada - <strong>10,00 €</strong></div>
+    </div>
+
+  </div>
+
+
+
+    <!-- Hier ist der Shisha Rauch -->
+    <div class="smoke"></div>
+    <div class="smoke"></div> 
+    <div class="smoke"></div>
+    <div class="smoke"></div>
+    <div class="smoke"></div>
+    <div class="smoke"></div>
+    <div class="smoke"></div>
+    <div class="smoke"></div>
+    <div class="smoke"></div>    <div class="smoke"></div> 
+    <div class="smoke"></div>
+    <div class="smoke"></div>
+    <div class="smoke"></div>
+    <div class="smoke"></div>
+    <div class="smoke"></div>
+    <div class="smoke"></div>
+    <div class="smoke"></div>
+    <div class="smoke"></div> 
+    <div class="smoke"></div>
+    <div class="smoke"></div>
+    <div class="smoke"></div>
+    <div class="smoke"></div>
+    <div class="smoke"></div>
+    <div class="smoke"></div>
+    <div class="smoke"></div>
+    <!-- Dein Footer-Inhalt -->
+
+
+
+  <script>
+function togglePanel(panelId, iconId, accordionId) {
+    const panel = document.getElementById(panelId);
+    const icon = document.getElementById(iconId);
+    const accordion = document.getElementById(accordionId);
+
+    panel.classList.toggle("active"); // Panel anzeigen/verstecken
+    accordion.classList.toggle("active"); // Accordion auf aktiv setzen
+
+    // Icon entsprechend ändern
+    if (panel.classList.contains("active")) {
+        icon.innerHTML = "keyboard_arrow_up"; // Icon für ausgeklappt
+    } else {
+        icon.innerHTML = "arrow_drop_down"; // Icon für eingeklappt
+    }
+}
+  </script>
+</body>
+</html>
